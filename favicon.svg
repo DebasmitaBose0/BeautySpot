@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="lipstickGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff1744;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d81b60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c2185b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Bold lipstick stroke forming a heart shape -->
+  <path d="M 50 25 
+           Q 35 15, 25 20 
+           Q 10 25, 10 40 
+           Q 10 55, 25 70 
+           L 50 90 
+           L 75 70 
+           Q 90 55, 90 40 
+           Q 90 25, 75 20 
+           Q 65 15, 50 25 Z" 
+        fill="none" 
+        stroke="url(#lipstickGradient)" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        opacity="0.95"/>
+  
+  <!-- Inner highlight for depth -->
+  <path d="M 50 30 
+           Q 38 22, 30 26 
+           Q 18 30, 18 42 
+           Q 18 54, 30 66 
+           L 50 82" 
+        fill="none" 
+        stroke="rgba(255, 255, 255, 0.3)" 
+        stroke-width="2" 
+        stroke-linecap="round"
+        opacity="0.6"/>
+</svg>

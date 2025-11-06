@@ -7,8 +7,417 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeautySpot</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Preloader Styles -->
+    <style>
+        /* Premium Loader - Sephora/Huda Beauty Style */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            overflow: hidden;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Premium Container */
+        .magic-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Rose Gold Accent Lines */
+        .accent-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #d4af7a 50%, transparent 100%);
+            opacity: 0;
+            animation: lineExpand 1.5s ease-out forwards;
+        }
+
+        .accent-line.top {
+            top: 20%;
+            width: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0.5s;
+        }
+
+        .accent-line.bottom {
+            bottom: 20%;
+            width: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0.7s;
+        }
+
+        @keyframes lineExpand {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                width: 400px;
+                opacity: 0.6;
+            }
+        }
+
+        /* Bold Brand Typography */
+        .brand-logo-reveal {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+            opacity: 0;
+            animation: brandFadeIn 1s ease-out 0.3s forwards;
+        }
+
+        .brand-logo-reveal h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af7a 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            position: relative;
+            font-family: 'Arial Black', sans-serif;
+            text-shadow: 0 0 30px rgba(212, 175, 122, 0.3);
+        }
+
+        .brand-logo-reveal h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af7a, transparent);
+            animation: underlineGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes underlineGlow {
+            0%, 100% {
+                opacity: 0.6;
+                box-shadow: 0 0 10px rgba(212, 175, 122, 0.4);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 20px rgba(212, 175, 122, 0.8);
+            }
+        }
+
+        .brand-tagline {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: #d4af7a;
+            margin-top: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: taglineFadeIn 1s ease-out 0.8s forwards;
+        }
+
+        @keyframes brandFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes taglineFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        /* Beauty Product Silhouettes */
+        .product-silhouettes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .silhouette {
+            position: absolute;
+            opacity: 0;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 122, 0.3));
+        }
+
+        /* Lipstick Silhouette */
+        .silhouette-lipstick {
+            width: 60px;
+            height: 90px;
+            top: 25%;
+            left: 15%;
+            animation: silhouetteFadeIn 1.5s ease-out 1s forwards;
+        }
+
+        .lipstick-body {
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.3) 0%, rgba(212, 175, 122, 0.1) 100%);
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .lipstick-tip {
+            width: 50%;
+            height: 35%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.5) 0%, rgba(212, 175, 122, 0.2) 100%);
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: -28%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Perfume Bottle Silhouette */
+        .silhouette-perfume {
+            width: 70px;
+            height: 100px;
+            top: 30%;
+            right: 15%;
+            animation: silhouetteFadeIn 1.5s ease-out 1.2s forwards;
+        }
+
+        .perfume-body {
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(135deg, rgba(212, 175, 122, 0.2) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(212, 175, 122, 0.2) 100%);
+            border-radius: 8px;
+            position: relative;
+            margin-top: 30%;
+        }
+
+        .perfume-cap {
+            width: 50%;
+            height: 25%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.4) 0%, rgba(212, 175, 122, 0.2) 100%);
+            border-radius: 4px 4px 0 0;
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Compact Silhouette */
+        .silhouette-compact {
+            width: 80px;
+            height: 80px;
+            bottom: 25%;
+            left: 18%;
+            animation: silhouetteFadeIn 1.5s ease-out 1.4s forwards;
+        }
+
+        .compact-case {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 122, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(212, 175, 122, 0.25) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 122, 0.3);
+            position: relative;
+        }
+
+        .compact-mirror {
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 8px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Mascara Silhouette */
+        .silhouette-mascara {
+            width: 50px;
+            height: 110px;
+            bottom: 28%;
+            right: 18%;
+            animation: silhouetteFadeIn 1.5s ease-out 1.6s forwards;
+        }
+
+        .mascara-tube {
+            width: 100%;
+            height: 65%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border-radius: 6px;
+            position: relative;
+            margin-top: 35%;
+        }
+
+        .mascara-wand {
+            width: 30%;
+            height: 35%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.4) 0%, rgba(0, 0, 0, 0.3) 100%);
+            border-radius: 2px;
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Brush Silhouette */
+        .silhouette-brush {
+            width: 65px;
+            height: 95px;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: silhouetteFadeIn 1.5s ease-out 1.8s forwards;
+        }
+
+        .brush-handle {
+            width: 15px;
+            height: 70%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.3) 0%, rgba(212, 175, 122, 0.15) 100%);
+            border-radius: 8px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .brush-bristles {
+            width: 40px;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(212, 175, 122, 0.4) 0%, rgba(212, 175, 122, 0.2) 100%);
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            bottom: 68%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes silhouetteFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Minimal Loading Progress Bar */
+        .loading-progress {
+            position: absolute;
+            bottom: 15%;
+            width: 250px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: progressBarFadeIn 0.5s ease-out 0.5s forwards;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af7a 0%, #ffffff 50%, #d4af7a 100%);
+            background-size: 200% 100%;
+            animation: progressFill 4s ease-out forwards, progressShine 1.5s ease-in-out infinite;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(212, 175, 122, 0.6);
+        }
+
+        @keyframes progressBarFadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes progressFill {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes progressShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating Particles */
+        .luxury-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(212, 175, 122, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 4s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(212, 175, 122, 0.4);
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-30px) translateX(15px);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .brand-logo-reveal h1 {
+                font-size: 3rem;
+                letter-spacing: 5px;
+            }
+            .brand-tagline {
+                font-size: 0.8rem;
+                letter-spacing: 3px;
+            }
+            .silhouette {
+                transform: scale(0.7);
+            }
+            .accent-line {
+                max-width: 250px;
+            }
+            @keyframes lineExpand {
+                100% { width: 250px; }
+            }
+        }
+    </style>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -112,6 +521,69 @@
 </head>
 
 <body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="magic-container">
+            <!-- Rose Gold Accent Lines -->
+            <div class="accent-line top"></div>
+            <div class="accent-line bottom"></div>
+
+            <!-- Beauty Product Silhouettes -->
+            <div class="product-silhouettes">
+                <!-- Lipstick -->
+                <div class="silhouette silhouette-lipstick">
+                    <div class="lipstick-body">
+                        <div class="lipstick-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Perfume -->
+                <div class="silhouette silhouette-perfume">
+                    <div class="perfume-cap"></div>
+                    <div class="perfume-body"></div>
+                </div>
+
+                <!-- Compact -->
+                <div class="silhouette silhouette-compact">
+                    <div class="compact-case">
+                        <div class="compact-mirror"></div>
+                    </div>
+                </div>
+
+                <!-- Mascara -->
+                <div class="silhouette silhouette-mascara">
+                    <div class="mascara-wand"></div>
+                    <div class="mascara-tube"></div>
+                </div>
+
+                <!-- Brush -->
+                <div class="silhouette silhouette-brush">
+                    <div class="brush-bristles"></div>
+                    <div class="brush-handle"></div>
+                </div>
+            </div>
+
+            <!-- Luxury Particles -->
+            <div class="luxury-particle" style="top: 15%; left: 25%; animation-delay: 0s;"></div>
+            <div class="luxury-particle" style="top: 30%; left: 75%; animation-delay: 0.5s;"></div>
+            <div class="luxury-particle" style="top: 55%; left: 20%; animation-delay: 1s;"></div>
+            <div class="luxury-particle" style="top: 70%; left: 80%; animation-delay: 1.5s;"></div>
+            <div class="luxury-particle" style="top: 45%; left: 85%; animation-delay: 0.8s;"></div>
+            <div class="luxury-particle" style="top: 85%; left: 30%; animation-delay: 1.2s;"></div>
+
+            <!-- Bold Brand Typography -->
+            <div class="brand-logo-reveal">
+                <h1>BEAUTYSPOT</h1>
+                <p class="brand-tagline">Luxury · Beauty · Redefined</p>
+            </div>
+
+            <!-- Minimal Loading Progress -->
+            <div class="loading-progress">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- header section starts  -->
 
@@ -701,6 +1173,42 @@
 
     <script>
         lightGallery(document.querySelector('.gallery .lightbox'));
+    </script>
+
+    <!-- Preloader Script -->
+    <script>
+        // Check if preloader has been shown in this session
+        const hasSeenPreloader = sessionStorage.getItem('preloaderShown');
+        const preloader = document.getElementById('preloader');
+        
+        if (hasSeenPreloader) {
+            // If already shown, hide immediately
+            preloader.style.display = 'none';
+        } else {
+            // Show premium loader
+            // Hide preloader after animation completes
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                sessionStorage.setItem('preloaderShown', 'true');
+                
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1000);
+            }, 4500); // 4.5 seconds - premium experience
+        }
+
+        // Prevent scroll during preloader
+        if (!hasSeenPreloader) {
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 5500);
+        }
+    </script>
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 7800);
+        }
     </script>
 
 </body>
