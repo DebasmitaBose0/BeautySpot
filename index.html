@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautySpot</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+
+    <!-- custom css file link  -->
+    <!-- cache-bust version added so browsers fetch latest CSS after edits -->
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="loading-animations.css">
+    <link rel="stylesheet" href="floating-include.css">
+
+    <!-- Internal CSS: easy variables to change the nav colour -->
+    <style>
+        :root {
+            /* change these to update the nav colour / contrast */
+            /* Default set to a pink gradient for the whole navigation bar */
+            --nav-bg-start: rgba(197, 4, 245, 0.388);
+            /* pink gradient start (darker) */
+            --nav-bg-end: rgba(198, 0, 30, 0.656);
+            /* pink gradient end (lighter) */
+            --nav-border: rgba(255, 20, 145, 0.66);
+            /* subtle pink border */
+            --nav-text: #f81010;
+            /* normal link color */
+            --nav-text-hover: #e90e7b;
+            /* hover / active color (lighter white) */
+            --nav-accent: #ff4d88;
+            /* accent color you can use elsewhere */
+        }
+
+        /* Glass nav wrapper */
+        .glassmorphism-nav {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding: 10px 18px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, var(--nav-bg-start), var(--nav-bg-end));
+            border: 1px solid var(--nav-border);
+            backdrop-filter: blur(8px) saturate(120%);
+            -webkit-backdrop-filter: blur(8px) saturate(120%);
+        }
+
+        /* Plain inline nav (no surrounding box) */
+        .nav-inline {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            padding: 0;
+            /* no box padding */
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
+
+        .nav-inline .nav-item {
+            color: var(--nav-text);
+            text-decoration: none;
+            padding: 6px 8px;
+            border-radius: 6px;
+            transition: color .18s ease, background-color .18s ease;
+            font-weight: 600;
+            background: transparent;
+        }
+
+        .nav-inline .nav-item:hover,
+        .nav-inline .nav-item:focus {
+            color: var(--nav-text-hover);
+            background: rgba(255, 255, 255, 0.03);
+            transform: none;
+            /* don't lift */
+        }
+
+        /* Nav links */
+        .glassmorphism-nav .nav-item {
+            color: var(--nav-text);
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 18px;
+            transition: color .18s ease, background-color .18s ease, transform .12s ease;
+            font-weight: 600;
+        }
+
+        /* Hover / focus state */
+        .glassmorphism-nav .nav-item:hover,
+        .glassmorphism-nav .nav-item:focus {
+            color: var(--nav-text-hover);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        /* optional small tweak to improve contrast on smaller screens */
+        @media (max-width:700px) {
+            .glassmorphism-nav .nav-item {
+                padding: 8px 12px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+        <!-- Mobile menu button -->
+        <div class="mobile-menu-btn" id="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="index.html" class="logo">
+            <div class="beauty-icon">
+                <svg viewbox="0 0 120 120" class="beauty-svg">
+                    <defs>
+                        <lineargradient id="beautyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff4d88;stop-opacity:1" />
+                            <stop offset="30%" style="stop-color:#b76e79;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fce4ec;stop-opacity:1" />
+                        </lineargradient>
+                        <radialgradient id="gemGradient" cx="50%" cy="30%" r="50%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                            <stop offset="60%" style="stop-color:#ff4d88;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
+                        </radialgradient>
+                    </defs>
+                    <!-- Lipstick case -->
+                    <rect x="45" y="70" width="30" height="35" rx="8" fill="url(#beautyGradient)" />
+                    <!-- Lipstick bullet -->
+                    <rect x="48" y="55" width="24" height="20" rx="12" fill="url(#gemGradient)" />
+                    <!-- Elegant diamond shape -->
+                    <polygon points="60,25 70,35 60,45 50,35" fill="url(#gemGradient)" stroke="#ff4d88"
+                        stroke-width="2" />
+                    <!-- Decorative sparkles -->
+                    <circle cx="35" cy="30" r="3" fill="#fce4ec" opacity="0.8" />
+                    <circle cx="85" cy="40" r="2" fill="#ff4d88" opacity="0.9" />
+                    <circle cx="25" cy="60" r="2.5" fill="#b76e79" opacity="0.7" />
+                    <circle cx="95" cy="70" r="2" fill="#fce4ec" opacity="0.8" />
+                </svg>
+            </div>
+            <span class="brand-title">BeautySpot</span>
+        </a>
+
+        <div class="nav-container">
+            <form action="" class="search-form">
+                <input type="search" name="" placeholder="search here..." id="search-box">
+                <label for="search-box" class="fas fa-search search-icon"></label>
+            </form>
+
+            <nav class="nav-inline" id="main-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-item" aria-label="Home">Home</a>
+                <a href="about.html" class="nav-item" aria-label="About">About</a>
+                <a href="products.html" class="nav-item" aria-label="Shop">Shop</a>
+                <a href="gallery.html" class="nav-item" aria-label="Gallery">Gallery</a>
+                <a href="blogs.html" class="nav-item" aria-label="Blog">Tutorial</a>
+                <a href="reviews.html" class="nav-item" aria-label="Reviews">Reviews</a>
+                <a href="contact.html" class="nav-item" aria-label="Contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Background animation elements -->
+        <div class="header-bg-animation">
+            <div class="sparkle" style="--delay: 0s; --duration: 3s;"></div>
+            <div class="sparkle" style="--delay: 1s; --duration: 4s;"></div>
+            <div class="sparkle" style="--delay: 2s; --duration: 3.5s;"></div>
+            <div class="bokeh" style="--delay: 0.5s; --duration: 5s;"></div>
+            <div class="bokeh" style="--delay: 2.5s; --duration: 4.5s;"></div>
+        </div>
+    </header>
+
+
+
+    <!-- header section ends -->
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+        <div class="animated-background">
+            <div class="glowing-orb" style="top: 10%; left: 10%; width: 150px; height: 150px; animation-duration: 10s;">
+            </div>
+            <div class="glowing-orb" style="top: 50%; left: 80%; width: 200px; height: 200px; animation-duration: 12s;">
+            </div>
+            <div class="glowing-orb" style="top: 80%; left: 20%; width: 100px; height: 100px; animation-duration: 8s;">
+            </div>
+            <div class="floating-sparkle" style="top: 20%; left: 30%; animation-duration: 6s;">✨</div>
+            <div class="floating-sparkle" style="top: 40%; left: 70%; animation-duration: 7s;">✨</div>
+            <div class="floating-sparkle" style="top: 60%; left: 10%; animation-duration: 8s;">✨</div>
+            <div class="floating-sparkle" style="top: 90%; left: 90%; animation-duration: 5s;">✨</div>
+        </div>
+
+        <!-- Enhanced Ethereal Sparkles & Orbs -->
+        <div class="ethereal-sparkles">
+            <!-- Floating orbs -->
+            <div class="sparkle-orb small"></div>
+            <div class="sparkle-orb medium"></div>
+            <div class="sparkle-orb large"></div>
+            <div class="sparkle-orb small"></div>
+            <div class="sparkle-orb medium"></div>
+            <div class="sparkle-orb large"></div>
+
+            <!-- Twinkling stars -->
+            <div class="sparkle-star"></div>
+            <div class="sparkle-star"></div>
+            <div class="sparkle-star"></div>
+            <div class="sparkle-star"></div>
+            <div class="sparkle-star"></div>
+            <div class="sparkle-star"></div>
+        </div>
+
+        <!-- Animated Cosmetic Icons -->
+        <div class="floating-cosmetic-icons">
+            <!-- Lipstick Icon -->
+            <div class="cosmetic-icon lipstick-icon">
+                <svg viewbox="0 0 100 100" class="icon-svg">
+                    <defs>
+                        <lineargradient id="lipstickGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff4d88;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
+                        </lineargradient>
+                    </defs>
+                    <rect x="35" y="40" width="30" height="45" rx="15" fill="url(#lipstickGrad)" />
+                    <rect x="37" y="20" width="26" height="25" rx="13" fill="#ff4d88" />
+                    <circle cx="50" cy="20" r="8" fill="#fff" opacity="0.3" />
+                </svg>
+            </div>
+
+            <!-- Makeup Brush Icon -->
+            <div class="cosmetic-icon brush-icon">
+                <svg viewbox="0 0 100 100" class="icon-svg">
+                    <defs>
+                        <lineargradient id="brushGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#b76e79;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fce4ec;stop-opacity:1" />
+                        </lineargradient>
+                    </defs>
+                    <rect x="45" y="60" width="10" height="30" fill="#8b4513" />
+                    <ellipse cx="50" cy="45" rx="12" ry="18" fill="url(#brushGrad)" />
+                    <ellipse cx="50" cy="40" rx="8" ry="10" fill="#fff" opacity="0.4" />
+                </svg>
+            </div>
+
+            <!-- Compact Mirror Icon -->
+            <div class="cosmetic-icon mirror-icon">
+                <svg viewbox="0 0 100 100" class="icon-svg">
+                    <defs>
+                        <radialgradient id="mirrorGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
+                        </radialgradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="35" fill="url(#mirrorGrad)" />
+                    <circle cx="50" cy="50" r="25" fill="#fff" opacity="0.8" />
+                    <circle cx="50" cy="50" r="20" fill="#f8f8f8" />
+                    <circle cx="45" cy="45" r="8" fill="#fff" opacity="0.6" />
+                </svg>
+            </div>
+
+            <!-- Mascara Icon -->
+            <div class="cosmetic-icon mascara-icon">
+                <svg viewbox="0 0 100 100" class="icon-svg">
+                    <defs>
+                        <lineargradient id="mascaraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff4d88;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#2c2c2c;stop-opacity:1" />
+                        </lineargradient>
+                    </defs>
+                    <rect x="42" y="30" width="16" height="50" rx="8" fill="url(#mascaraGrad)" />
+                    <rect x="45" y="15" width="10" height="20" rx="5" fill="#ff4d88" />
+                    <circle cx="50" cy="25" r="3" fill="#fff" opacity="0.4" />
+                </svg>
+            </div>
+
+            <!-- Eyeshadow Palette Icon -->
+            <div class="cosmetic-icon eyeshadow-icon">
+                <svg viewbox="0 0 100 100" class="icon-svg">
+                    <defs>
+                        <lineargradient id="paletteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
+                        </lineargradient>
+                    </defs>
+                    <rect x="25" y="35" width="50" height="30" rx="5" fill="url(#paletteGrad)" />
+                    <circle cx="35" cy="45" r="6" fill="#ff4d88" />
+                    <circle cx="50" cy="45" r="6" fill="#b76e79" />
+                    <circle cx="65" cy="45" r="6" fill="#fce4ec" />
+                    <circle cx="42" cy="55" r="4" fill="#ff69b4" />
+                    <circle cx="58" cy="55" r="4" fill="#d4af7a" />
+                </svg>
+            </div>
+
+            <!-- Perfume Bottle Icon -->
+            <div class="cosmetic-icon perfume-icon">
+                <svg viewbox="0 0 100 100" class="icon-svg">
+                    <defs>
+                        <lineargradient id="perfumeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:0.9" />
+                            <stop offset="50%" style="stop-color:#ff69b4;stop-opacity:0.7" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:0.8" />
+                        </lineargradient>
+                    </defs>
+                    <rect x="35" y="45" width="30" height="40" rx="6" fill="url(#perfumeGrad)" />
+                    <rect x="42" y="35" width="16" height="15" rx="3" fill="#ff4d88" />
+                    <rect x="45" y="30" width="10" height="8" rx="2" fill="#b76e79" />
+                    <circle cx="50" cy="60" r="8" fill="#fff" opacity="0.3" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Ambient background orbs -->
+        <div class="ambient-background">
+            <div class="ambient-orb large-bg"></div>
+            <div class="ambient-orb medium-bg"></div>
+            <div class="ambient-orb small-bg"></div>
+        </div>
+
+        <!-- Luxury Particles Background -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="slide active">
+            <div class="content glass-card shimmer-effect">
+                <div class="luxury-badge">
+                    <span class="badge-text">✨ Premium Collection</span>
+                </div>
+                <div class="hero-heading hero-pink-variant-4">
+                    <span class="luxury-subtitle">Discover Your Beauty</span>
+                    <h3 class="luxury-title fade-in-heading title-sheen">Radiant Cosmetics</h3>
+                    <p class="hero-description">Experience the pinnacle of luxury beauty with our exclusive collection
+                        of
+                        premium cosmetics. Crafted with the finest ingredients for the modern goddess.</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="products.html" class="btn btn-primary">Explore Collection</a>
+                    <a href="about.html" class="btn btn-secondary">Our Story</a>
+                </div>
+                <div class="controls">
+                    <div class="control-btn fas fa-angle-left" onclick="prev()"></div>
+                    <div class="control-btn fas fa-angle-right" onclick="next()"></div>
+                </div>
+            </div>
+            <div class="image">
+                <div class="image-glow"></div>
+                <img src="https://freedesignfile.com/upload/2018/10/Attractive-fashion-model-and-fashion-makeup-Stock-Photo-01.jpg"
+                    alt="Premium Cosmetics" class="hero-image">
+                <div class="floating-elements">
+                    <div class="float-element" style="--delay: 0s; --duration: 4s;">✨</div>
+                    <div class="float-element" style="--delay: 1s; --duration: 5s;">💄</div>
+                    <div class="float-element" style="--delay: 2s; --duration: 3s;">✨</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content glass-card shimmer-effect">
+                <div class="luxury-badge">
+                    <span class="badge-text">✨ New Arrival</span>
+                </div>
+                <div class="hero-heading">
+                    <span class="luxury-subtitle">Glamour Redefined</span>
+                    <h3 class="luxury-title">Luxury Accessories</h3>
+                    <p class="hero-description">Complement your beauty routine with our exquisite collection of premium
+                        accessories. Each piece designed to elevate your cosmetic experience.</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="arrivals.html" class="btn btn-primary">View Collection</a>
+                    <a href="gallery.html" class="btn btn-secondary">Gallery</a>
+                </div>
+                <div class="controls">
+                    <div class="control-btn fas fa-angle-left" onclick="prev()"></div>
+                    <div class="control-btn fas fa-angle-right" onclick="next()"></div>
+                </div>
+            </div>
+            <div class="image">
+                <div class="image-glow"></div>
+                <img src="https://img.freepik.com/premium-photo/gold-beauty-face-glitter-model-with-luxury-eyeshadow-cosmetics-product-skincare-glow-makeup-wind-hair-aesthetic-portrait-woman-with-jewelry-ring-accessories-vitiligo-healthcare_590464-136456.jpg"
+                    alt="Luxury Accessories" class="hero-image">
+                <div class="floating-elements">
+                    <div class="float-element" style="--delay: 0.5s; --duration: 4.5s;">💫</div>
+                    <div class="float-element" style="--delay: 1.5s; --duration: 3.5s;">👑</div>
+                    <div class="float-element" style="--delay: 2.5s; --duration: 5s;">✨</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content glass-card shimmer-effect">
+                <div class="luxury-badge">
+                    <span class="badge-text">✨ Skincare Luxe</span>
+                </div>
+                <div class="hero-heading">
+                    <span class="luxury-subtitle">Nourish & Glow</span>
+                    <h3 class="luxury-title">Radiant Skin Care</h3>
+                    <p class="hero-description">Transform your skin with our scientifically advanced skincare
+                        formulations.
+                        Luxury meets innovation in every drop for your perfect complexion.</p>
+                </div>
+                <div class="hero-actions">
+                    <a href="products.html" class="btn btn-primary">Shop Skincare</a>
+                    <a href="team.html" class="btn btn-secondary">Meet Experts</a>
+                </div>
+                <div class="controls">
+                    <div class="control-btn fas fa-angle-left" onclick="prev()"></div>
+                    <div class="control-btn fas fa-angle-right" onclick="next()"></div>
+                </div>
+            </div>
+            <div class="image">
+                <div class="image-glow"></div>
+                <img src="https://www.shutterstock.com/image-photo/skincare-woman-beautiful-face-touching-600nw-2459232123.jpg"
+                    alt="Radiant Skincare" class="hero-image">
+
+                <div class="floating-elements">
+                    <div class="float-element" style="--delay: 1s; --duration: 4s;">🌟</div>
+                    <div class="float-element" style="--delay: 2s; --duration: 3.5s;">💎</div>
+                    <div class="float-element" style="--delay: 0s; --duration: 5.5s;">✨</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+    <!-- condensed sections hub (links to dedicated pages) -->
+    <section class="sections-hub" aria-label="Explore more">
+        <div class="section-header">
+            <h2 class="section-title">Explore BeautySpot</h2>
+            <p class="section-description">We've moved detailed sections to their own pages to keep the homepage focused
+                on our signature look.</p>
+        </div>
+
+        <div class="hub-grid">
+            <a class="hub-card" href="products.html">Shop Products</a>
+            <a class="hub-card" href="gallery.html">View Gallery</a>
+            <a class="hub-card" href="team.html">Meet Our Team</a>
+            <a class="hub-card" href="arrivals.html">New Arrivals</a>
+            <a class="hub-card" href="blogs.html">Read Our Blog</a>
+            <a class="hub-card" href="reviews.html">Customer Reviews</a>
+            <a class="hub-card" href="about.html">About Us</a>
+            <a class="hub-card" href="contact.html">Contact</a>
+        </div>
+    </section>
+
+    <!-- footer section starts  -->
+
+    <footer class="footer" id="contact">
+
+        <!-- Animated Background -->
+        <div class="footer-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="footer-content">
+
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <h2 class="brand-name">BeautySpot</h2>
+                    <div class="brand-tagline">✨ Luxury Beauty Redefined</div>
+                </div>
+                <p class="brand-description">
+                    Discover the ultimate in luxury cosmetics. BeautySpot brings you premium beauty products
+                    that transform your daily routine into a glamorous experience.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="Pinterest">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                    <a href="#" class="social-icon" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="products.html" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Shop</span>
+                    </a>
+                    <a href="gallery.html" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="team.html" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Our Team</span>
+                    </a>
+                    <a href="arrivals.html" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>New Arrivals</span>
+                    </a>
+                    <a href="reviews.html" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Reviews</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Customer Care -->
+            <div class="footer-section">
+                <h3 class="footer-title">Customer Care</h3>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>My Account</span>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Order Tracking</span>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Wishlist</span>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Return & Exchange</span>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>Size Guide</span>
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-angle-right"></i>
+                        <span>FAQ</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3 class="footer-title">Contact Info</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Address</span>
+                            <span class="contact-value">123 Beauty Street, Glamour City, GC 12345</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">+1 (555) 123-4567</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">hello@beautyspot.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-label">Hours</span>
+                            <span class="contact-value">Mon - Sat: 9AM - 8PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section newsletter-section">
+                <h3 class="footer-title">Beauty Newsletter</h3>
+                <p class="newsletter-description">
+                    Subscribe to get beauty tips, exclusive offers, and be the first to know about new arrivals.
+                </p>
+                <form class="newsletter-form">
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="newsletter-features">
+                        <div class="feature">
+                            <i class="fas fa-gift"></i>
+                            <span>Exclusive Offers</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <span>Beauty Tips</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bell"></i>
+                            <span>New Arrivals</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="footer-payment">
+            <div class="payment-title">We Accept</div>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fab fa-cc-visa"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-mastercard"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-amex"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-apple-pay"></i>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-google-pay"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 BeautySpot. All rights reserved.</p>
+                    <p>Crafted with <i class="fas fa-heart"></i> by <span class="creators">Manisha & Debasmita</span>
+                    </p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="legal-link">Privacy Policy</a>
+                    <a href="#" class="legal-link">Terms of Service</a>
+                    <a href="#" class="legal-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- footer section ends -->
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link      -->
+    <script src="script.js"></script>
+
+    <script>
+        lightGallery(document.querySelector('.gallery .lightbox'));
+    </script>
+
+</body>
+
+</html>
