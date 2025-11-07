@@ -4,6 +4,7 @@ A modern, elegant beauty and makeup e-commerce website featuring product showcas
 
 ## 🌟 Features
 
+- **Premium Preloader Animation**: Elegant loading screen with animated product silhouettes (lipstick, perfume, compact, brush, mascara) in rose-gold gradients with 23+ sparkle effects, shown only once per session
 - **Responsive Design**: Fully responsive layout that works seamlessly on desktop, tablet, and mobile devices
 - **Product Catalog**: Browse through various makeup categories including foundation, concealer, highlighter, and lipstick
 - **Interactive Gallery**: Beautiful image gallery showcasing beauty moments and luxury looks
@@ -134,6 +135,14 @@ The tutorial section features embedded YouTube Shorts:
 ## ✨ Key Features by Page
 
 ### Homepage (index.html)
+- **Premium Preloader**: Elegant loading animation featuring 5 animated product silhouettes (lipstick, perfume, compact mirror, makeup brush, and mascara) in rose-gold gradients
+  - Black gradient background (#0a0a0a to #1a1a1a)
+  - 23+ sparkle effects with multiple animation types (loader sparkles, floating sparkles, twinkle sparkles, glow sparkles)
+  - BeautySpot brand title with elegant typography
+  - Animated loading progress bar with shimmer effect
+  - Session-based display (shows once per browser session using sessionStorage)
+  - Smooth fade-out transition after 4.5 seconds
+  - Fully responsive design optimized for mobile and desktop
 - Hero section with brand introduction
 - Featured products carousel
 - Call-to-action buttons
