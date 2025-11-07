@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BeautySpot — Reviews</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
@@ -67,7 +72,38 @@
 
 <body>
     <header class="header">
-        <a href="index.html" class="logo"><span class="brand-title">BeautySpot</span></a>
+        <a href="index.html" class="logo">
+            <div class="beauty-icon">
+                <svg viewbox="0 0 120 120" class="beauty-svg">
+                    <defs>
+                        <lineargradient id="beautyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff4d88;stop-opacity:1" />
+                            <stop offset="30%" style="stop-color:#b76e79;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fce4ec;stop-opacity:1" />
+                        </lineargradient>
+                        <radialgradient id="gemGradient" cx="50%" cy="30%" r="50%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                            <stop offset="60%" style="stop-color:#ff4d88;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
+                        </radialgradient>
+                    </defs>
+                    <!-- Lipstick case -->
+                    <rect x="45" y="70" width="30" height="35" rx="8" fill="url(#beautyGradient)" />
+                    <!-- Lipstick bullet -->
+                    <rect x="48" y="55" width="24" height="20" rx="12" fill="url(#gemGradient)" />
+                    <!-- Elegant diamond shape -->
+                    <polygon points="60,25 70,35 60,45 50,35" fill="url(#gemGradient)" stroke="#ff4d88"
+                        stroke-width="2" />
+                    <!-- Decorative sparkles -->
+                    <circle cx="35" cy="30" r="3" fill="#fce4ec" opacity="0.8" />
+                    <circle cx="85" cy="40" r="2" fill="#ff4d88" opacity="0.9" />
+                    <circle cx="25" cy="60" r="2.5" fill="#b76e79" opacity="0.7" />
+                    <circle cx="95" cy="70" r="2" fill="#fce4ec" opacity="0.8" />
+                </svg>
+            </div>
+            <span class="brand-title">BeautySpot</span>
+        </a>
         <nav class="nav-inline" id="main-nav" aria-label="Main navigation">
             <a href="index.html" class="nav-item" aria-label="Home">Home</a>
             <a href="about.html" class="nav-item" aria-label="About">About</a>

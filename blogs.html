@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BeautySpot — Tutorials</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -153,6 +157,35 @@
 
     <header class="header">
         <a href="index.html" class="logo">
+            <div class="beauty-icon">
+                <svg viewbox="0 0 120 120" class="beauty-svg">
+                    <defs>
+                        <lineargradient id="beautyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff4d88;stop-opacity:1" />
+                            <stop offset="30%" style="stop-color:#b76e79;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#ff69b4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fce4ec;stop-opacity:1" />
+                        </lineargradient>
+                        <radialgradient id="gemGradient" cx="50%" cy="30%" r="50%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                            <stop offset="60%" style="stop-color:#ff4d88;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
+                        </radialgradient>
+                    </defs>
+                    <!-- Lipstick case -->
+                    <rect x="45" y="70" width="30" height="35" rx="8" fill="url(#beautyGradient)" />
+                    <!-- Lipstick bullet -->
+                    <rect x="48" y="55" width="24" height="20" rx="12" fill="url(#gemGradient)" />
+                    <!-- Elegant diamond shape -->
+                    <polygon points="60,25 70,35 60,45 50,35" fill="url(#gemGradient)" stroke="#ff4d88"
+                        stroke-width="2" />
+                    <!-- Decorative sparkles -->
+                    <circle cx="35" cy="30" r="3" fill="#fce4ec" opacity="0.8" />
+                    <circle cx="85" cy="40" r="2" fill="#ff4d88" opacity="0.9" />
+                    <circle cx="25" cy="60" r="2.5" fill="#b76e79" opacity="0.7" />
+                    <circle cx="95" cy="70" r="2" fill="#fce4ec" opacity="0.8" />
+                </svg>
+            </div>
             <span class="brand-title">BeautySpot</span>
         </a>
 
@@ -174,7 +207,7 @@
              padding:3rem 2rem; background:linear-gradient(135deg,#fff 0%,#fce4ec 50%,#fff 100%);
              border-radius:20px; box-shadow:0 10px 30px rgba(232,67,147,0.15); border:2px solid rgba(255,182,193,0.4);">
                 <h2 style="font-size:3rem; color:#D81B60; font-weight:700;">Welcome to Our Tutorials</h2>
-                <p style="font-size:3.2rem; color:#dc3e3e; font-weight:700;">Explore the latest beauty tips, tricks &
+                <p style="font-size:3.8rem !important; color:#dc3e3e; font-weight:700; font-style:italic; line-height:1.3;">Explore the latest beauty tips, tricks &
                     makeup hacks!</p>
             </div>
 
