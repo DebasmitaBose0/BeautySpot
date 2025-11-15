@@ -1,3 +1,6 @@
+## Urgent Task
+
+Footer section to be fixed ASAP.
 # BeautySpot 💄✨
 
 A modern, elegant beauty and makeup e-commerce website featuring product showcases, tutorials, and customer reviews.
