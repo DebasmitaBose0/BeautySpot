@@ -6,15 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - BeautySpot</title>
-
-    <!-- Favicon -->
+    <!-- Favicon for all browsers -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="alternate icon" href="favicon.ico">
-
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <!-- Internal CSS: easy variables to change the nav colour (copied from index.html) -->
     <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Remove all animation and transitions from about section */
+        .about,
+        .about * {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        /* Accessibility: High contrast text for about card */
+        .about .content p {
+            color: #333333 !important;
+            font-weight: 500 !important;
+        }
+
+        .about .content h3,
+        .about .content span {
+            color: #b8004c !important;
+            font-weight: bold !important;
+        }
+
+        .about .content .feature-item span {
+            color: #b8004c !important;
+            font-weight: bold !important;
+        }
+
+        .about .content .feature-item i {
+            color: #b8004c !important;
+        }
+
+        .about .content a.btn {
+            color: #fff !important;
+            font-weight: bold !important;
+        }
+
         :root {
             /* change these to update the nav colour / contrast */
             /* Default set to a pink gradient for the whole navigation bar */
@@ -151,13 +195,14 @@
                 <a href="gallery.html" class="nav-item" aria-label="Gallery">Gallery</a>
                 <a href="blogs.html" class="nav-item" aria-label="Blog">Tutorial</a>
                 <a href="reviews.html" class="nav-item" aria-label="Reviews">Reviews</a>
+                <a href="contact.html" class="nav-item" aria-label="Contact">Contact</a>
             </nav>
         </div>
     </header>
 
     <!-- about section starts  -->
-    <section class="about" id="about" style="padding-top: 12rem;">
-        <div class="section-header">
+    <section class="about" id="about" style="padding-top: 12rem; max-width: 100%;">
+        <div class="section-header" style="max-width: 100%;">
             <div class="luxury-badge">
                 <span class="badge-text">✨ About BeautySpot</span>
             </div>
@@ -166,8 +211,8 @@
                 world of cosmetics.</p>
         </div>
 
-        <div class="about-content">
-            <div class="content">
+        <div class="about-content" style="max-width: 100%;">
+            <div class="content" style="max-width: 100%;">
                 <span>why choose us?</span>
                 <h3>makeup makes difference</h3>
                 <p>At BeautySpot, we believe that makeup is more than just cosmetics - it's about expressing your unique
