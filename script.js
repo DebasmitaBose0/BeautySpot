@@ -246,26 +246,17 @@ const headingAnimateOnScroll = new IntersectionObserver((entries) => {
 
 // Elements to animate on scroll (non-heading elements)
 const animateElements = document.querySelectorAll(`
-  .section-header,
   .product-card,
   .gallery-card,
   .team-card,
   .arrival-card,
   .review-card,
   .footer-section,
-  .hero-content,
-  .luxury-badge
+  .hero-content
 `);
 
 // Heading elements for special animation
 const headingElements = document.querySelectorAll(`
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .section-title,
   .product-title,
   .gallery-title,
   .luxury-title,
