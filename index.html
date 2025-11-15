@@ -920,95 +920,73 @@
     </section>
 
     <!-- home section ends -->
-    <!-- condensed sections hub (links to dedicated pages) -->
-    <section class="sections-hub" aria-label="Explore more">
-        <div class="section-header">
-            <h2 class="section-title">Explore BeautySpot</h2>
-            <p class="section-description">We've moved detailed sections to their own pages to keep the homepage focused
-                on our signature look.</p>
-        </div>
-
-        <div class="hub-grid">
-            <a class="hub-card" href="products.html">Shop Products</a>
-            <a class="hub-card" href="gallery.html">View Gallery</a>
-            <a class="hub-card" href="team.html">Meet Our Team</a>
-            <a class="hub-card" href="arrivals.html">New Arrivals</a>
-            <a class="hub-card" href="blogs.html">Read Our Blog</a>
-            <a class="hub-card" href="reviews.html">Customer Reviews</a>
-            <a class="hub-card" href="about.html">About Us</a>
-        </div>
-    </section>
 
     <!-- footer section starts  -->
 
-    <footer class="footer">
-
-        <!-- Animated Background -->
-        <div class="footer-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+    <footer class="footer minimal-luxury-footer">
+        <div class="footer-columns">
+            <div class="footer-col about-brand">
+                <h3>About BeautySpot</h3>
+                <p>BeautySpot is dedicated to redefining luxury in makeup and skincare. Discover premium products
+                    crafted for radiant, confident beauty.</p>
+            </div>
+            <div class="footer-col quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blogs.html">Tutorial</a></li>
+                </ul>
+            </div>
+            <div class="footer-col customer-care">
+                <h3>Customer Care</h3>
+                <ul>
+                    <li><a href="mailto:info@beautyspot.com">Contact Us</a></li>
+                    <li><a href="products.html#shipping">Shipping & Returns</a></li>
+                    <li><a href="about.html#faqs">FAQs</a></li>
+                    <li><a href="about.html#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col follow-us">
+                <h3>Follow Us</h3>
+                <div class="footer-social-icons">
+                    <a href="https://facebook.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                    <a href="https://youtube.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
         </div>
-
-        <div class="footer-content">
-
-            <!-- Brand Section -->
-            <div class="footer-brand">
-                <div class="brand-logo">
-                    <h2 class="brand-name">BeautySpot</h2>
-                    <div class="brand-tagline">✨ Luxury Beauty Redefined</div>
+        <div class="footer-newsletter-row">
+            <form class="footer-newsletter" action="#" method="post" autocomplete="off">
+                <label for="footer-news-email" class="footer-news-label">Sign up for exclusive offers</label>
+                <div class="footer-news-input-group">
+                    <input type="email" id="footer-news-email" name="email" class="footer-newsletter-input"
+                        placeholder="Your email address" required>
+                    <button type="submit" class="footer-newsletter-btn" onclick="alert('Thank you for subscribing!'); return false;">Subscribe</button>
                 </div>
-                <p class="brand-description">
-                    Discover the ultimate in luxury cosmetics. BeautySpot brings you premium beauty products
-                    that transform your daily routine into a glamorous experience.
-                </p>
+            </form>
+        </div>
+        <div class="footer-logo-row">
+            <div class="footer-logo">
+                <svg viewBox="0 0 60 60" width="48" height="48" class="footer-logo-svg" aria-label="BeautySpot logo">
+                    <defs>
+                        <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fce4ec" />
+                            <stop offset="100%" stop-color="#ff69b4" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="30" cy="30" r="28" fill="url(#footerLogoGradient)" stroke="#fff" stroke-width="2" />
+                    <text x="50%" y="54%" text-anchor="middle" fill="#d72660" font-size="18" font-family="Georgia,serif"
+                        font-weight="bold">BS</text>
+                </svg>
             </div>
-
-            <!-- Payment Methods -->
-            <div class="footer-payment">
-                <div class="payment-title">We Accept</div>
-                <div class="payment-methods">
-                    <div class="payment-method">
-                        <i class="fab fa-cc-visa"></i>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fab fa-cc-mastercard"></i>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fab fa-cc-amex"></i>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fab fa-cc-paypal"></i>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fab fa-apple-pay"></i>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fab fa-google-pay"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <div class="footer-copyright">
-                        <p>&copy; 2025 BeautySpot. All rights reserved.</p>
-                        <p>Crafted with <i class="fas fa-heart"></i> by <span class="creators">Manisha &
-                                Debasmita</span>
-                        </p>
-                    </div>
-                    <div class="footer-legal">
-                        <a href="#" class="legal-link">Privacy Policy</a>
-                        <a href="#" class="legal-link">Terms of Service</a>
-                        <a href="#" class="legal-link">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-
+        </div>
+        <div class="footer-copyright">
+            &copy; 2025 BeautySpot. All rights reserved.
+        </div>
     </footer>
 
     <!-- footer section ends -->
@@ -1058,11 +1036,6 @@
                 document.body.style.overflow = 'auto';
             }, 5500);
         }
-    </script>
-    setTimeout(() => {
-    document.body.style.overflow = 'auto';
-    }, 7800);
-    }
     </script>
 
 </body>
