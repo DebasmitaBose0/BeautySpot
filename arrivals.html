@@ -6,106 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Arrivals - BeautySpot</title>
-    
-    <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon for all browsers -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="alternate icon" href="favicon.ico">
-    
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.png">
 
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="style.css?v=2">
-    <link rel="stylesheet" href="loading-animations.css">
-    <link rel="stylesheet" href="floating-include.css">
-
-    <!-- Internal CSS: easy variables to change the nav colour -->
     <style>
-        :root {
-            /* change these to update the nav colour / contrast */
-            /* Default set to a pink gradient for the whole navigation bar */
-            --nav-bg-start: rgba(197, 4, 245, 0.388);
-            /* pink gradient start (darker) */
-            --nav-bg-end: rgba(198, 0, 30, 0.656);
-            /* pink gradient end (lighter) */
-            --nav-border: rgba(255, 20, 145, 0.66);
-            /* subtle pink border */
-            --nav-text: #f81010;
-            /* normal link color */
-            --nav-text-hover: #e90e7b;
-            /* hover / active color (lighter white) */
-            --nav-accent: #ff4d88;
-            /* accent color you can use elsewhere */
+        /* High-contrast review/testimonial card styles */
+        .review-card,
+        .testimonial-card,
+        .feedback-card {
+            background: #fff !important;
+            color: #222 !important;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10) !important;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
 
-        /* Glass nav wrapper */
-        .glassmorphism-nav {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            padding: 10px 18px;
-            border-radius: 28px;
-            background: linear-gradient(135deg, var(--nav-bg-start), var(--nav-bg-end));
-            border: 1px solid var(--nav-border);
-            backdrop-filter: blur(8px) saturate(120%);
-            -webkit-backdrop-filter: blur(8px) saturate(120%);
+        .review-card p,
+        .testimonial-card p,
+        .feedback-card p {
+            color: #333333 !important;
+            font-weight: 500 !important;
+            text-shadow: none !important;
         }
 
-        /* Plain inline nav (no surrounding box) */
-        .nav-inline {
-            display: flex;
-            gap: 14px;
-            align-items: center;
-            padding: 0;
-            /* no box padding */
-            background: transparent;
-            border: none;
-            border-radius: 0;
+        .review-card .author-info,
+        .testimonial-card .author-info,
+        .feedback-card .author-info,
+        .review-card .review-date,
+        .testimonial-card .review-date,
+        .feedback-card .review-date,
+        .review-card span,
+        .testimonial-card span,
+        .feedback-card span,
+        .review-card h3,
+        .testimonial-card h3,
+        .feedback-card h3 {
+            color: #555555 !important;
+            font-weight: 500 !important;
+            text-shadow: none !important;
         }
 
-        .nav-inline .nav-item {
-            color: var(--nav-text);
-            text-decoration: none;
-            padding: 6px 8px;
-            border-radius: 6px;
-            transition: color .18s ease, background-color .18s ease;
-            font-weight: 600;
-            background: transparent;
+        .review-card .reviewer,
+        .testimonial-card .reviewer,
+        .feedback-card .reviewer {
+            color: #b8004c !important;
+            font-weight: bold !important;
         }
 
-        .nav-inline .nav-item:hover,
-        .nav-inline .nav-item:focus {
-            color: var(--nav-text-hover);
-            background: rgba(255, 255, 255, 0.03);
-            transform: none;
-            /* don't lift */
+        .review-card .review-title,
+        .testimonial-card .review-title,
+        .feedback-card .review-title {
+            color: #b8004c !important;
+            font-weight: bold !important;
         }
 
-        /* Nav links for glassmorphism */
-        .glassmorphism-nav .nav-item {
-            color: var(--nav-text);
-            text-decoration: none;
-            padding: 6px 10px;
-            border-radius: 18px;
-            transition: color .18s ease, background-color .18s ease, transform .12s ease;
-            font-weight: 600;
-        }
-
-        .glassmorphism-nav .nav-item:hover,
-        .glassmorphism-nav .nav-item:focus {
-            color: var(--nav-text-hover);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-2px);
+        .review-card .review-stars i,
+        .testimonial-card .review-stars i,
+        .feedback-card .review-stars i {
+            color: #e6b800 !important;
         }
     </style>
 </head>
 
 <body>
-    <!-- header section starts  -->
     <header class="header">
-        <!-- Mobile menu button -->
         <div class="mobile-menu-btn" id="mobile-menu-btn">
             <span></span>
             <span></span>
@@ -113,106 +83,111 @@
         </div>
 
         <a href="index.html" class="logo">
-            <div class="beauty-icon">
-                <svg viewBox="0 0 120 120" class="beauty-svg">
-                    <defs>
-                        <linearGradient id="beautyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ff4d88;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#ff69b4;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="gemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#fce4ec;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#ff4d88;stop-opacity:0.8" />
-                            <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Lipstick case -->
-                    <rect x="45" y="70" width="30" height="35" rx="8" fill="url(#beautyGradient)" />
-                    <!-- Lipstick bullet -->
-                    <rect x="48" y="55" width="24" height="20" rx="12" fill="url(#gemGradient)" />
-                    <!-- Elegant diamond shape -->
-                    <polygon points="60,25 70,35 60,45 50,35" fill="url(#gemGradient)" stroke="#ff4d88"
-                        stroke-width="2" />
-                    <!-- Decorative sparkles -->
-                    <circle cx="35" cy="30" r="3" fill="#fce4ec" opacity="0.8" />
-                    <circle cx="85" cy="40" r="2" fill="#ff4d88" opacity="0.9" />
-                    <circle cx="25" cy="60" r="2.5" fill="#b76e79" opacity="0.7" />
-                    <circle cx="95" cy="70" r="2" fill="#fce4ec" opacity="0.8" />
-                </svg>
-            </div>
             <span class="brand-title">BeautySpot</span>
         </a>
 
-        <div class="nav-container">
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="search here..." id="search-box">
-                <label for="search-box" class="fas fa-search search-icon"></label>
-            </form>
-
-            <nav class="nav-inline" id="main-nav" aria-label="Main navigation">
-                <a href="index.html" class="nav-item" aria-label="Home">Home</a>
-                <a href="about.html" class="nav-item" aria-label="About">vAbout</a>
-                <a href="products.html" class="nav-item" aria-label="Shop">Shop</a>
-                <a href="gallery.html" class="nav-item" aria-label="Gallery">Gallery</a>
-                <a href="arrivals.html" class="nav-item active" aria-label="Arrivals">Arrival</a>
-                <a href="blogs.html" class="nav-item" aria-label="Blog">Tutorial</a>
-                <a href="reviews.html" class="nav-item" aria-label="Reviews">Reviews</a>
-            </nav>
-        </div>
+        <nav class="nav-inline" id="main-nav" aria-label="Main navigation">
+            <a href="index.html" class="nav-item" aria-label="Home">Home</a>
+            <a href="about.html" class="nav-item" aria-label="About">About</a>
+            <a href="products.html" class="nav-item" aria-label="Shop">Shop</a>
+            <a href="gallery.html" class="nav-item" aria-label="Gallery">Gallery</a>
+            <a href="blogs.html" class="nav-item" aria-label="Blog">Tutorial</a>
+            <a href="reviews.html" class="nav-item" aria-label="Reviews">Reviews</a>
+            <a href="contact.html" class="nav-item" aria-label="Contact">Contact</a>
+        </nav>
     </header>
 
-    <!-- arrivals section starts  -->
-    <section class="arrivals" id="arrivals" style="padding-top: 12rem;">
-        <div class="section-header">
-            <div class="luxury-badge">
-                <span class="badge-text">🎉 New Arrival</span>
+    <main>
+        <!-- New Arrivals / Velvet Matte Collection -->
+        <section class="about" id="about" style="padding-top: 6rem; background: #fff;">
+            <div class="section-header">
+                <div class="luxury-badge">
+                    <span class="badge-text">✨ New Arrivals</span>
+                </div>
+                <h2 class="section-title">Velvet Matte Collection</h2>
+                <p class="section-description">
+                    Luxurious matte lipsticks with velvet finish and long-lasting color.
+                    Discover the story behind BeautySpot - where luxury meets innovation in the world of cosmetics.
+                </p>
             </div>
-            <h2 class="section-title">Latest Collections</h2>
-            <p class="section-description">Discover our newest luxury cosmetics - fresh from the runway to your beauty
-                routine.</p>
-        </div>
 
-        <div class="arrivals-grid">
-            <!-- Arrival cards will be copied from main page -->
-            <div class="arrival-card glass-card shimmer-effect">
-                <div class="arrival-image-container">
-                    <img src="images/portrait-placeholder.svg" alt="Velvet Matte Lipstick Collection"
-                        class="arrival-image">
-                    <div class="arrival-overlay">
-                        <div class="arrival-actions">
-                            <button class="arrival-btn view-btn">
-                                <i class="fas fa-eye"></i> Quick View
-                            </button>
-                            <button class="arrival-btn cart-btn">
-                                <i class="fas fa-shopping-cart"></i> Add to Cart
-                            </button>
+            <div class="about-content">
+                <div class="content">
+                    <span class="arrival-price">₹3,839</span>
+                    <h3>Makeup Makes a Difference</h3>
+                    <p>
+                        At BeautySpot, we believe that makeup is more than just cosmetics - it's about expressing
+                        your unique beauty and confidence. Our carefully curated collection of premium beauty products
+                        is designed to enhance your natural radiance while providing you with the tools to create any
+                        look you desire.
+                    </p>
+                    <p>
+                        Founded with a passion for quality and innovation, BeautySpot has become a trusted name in the
+                        beauty industry. We source only the finest ingredients and work with leading manufacturers to
+                        ensure that every product meets our rigorous standards for quality, safety, and performance.
+                    </p>
+                    <span class="rating-text">(4.8)</span>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Cruelty-Free Products</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Premium Quality Ingredients</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Beauty Consultations</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Worldwide Free Shipping</span>
                         </div>
                     </div>
-                    <div class="arrival-badge new">NEW</div>
-                </div>
-                <div class="arrival-content">
-                    <div class="arrival-category">Lipsticks</div>
-                    <h3 class="arrival-title">Velvet Matte Collection</h3>
-                    <p class="arrival-description">Luxurious matte lipsticks with velvet finish and long-lasting
-                        formula.</p>
-                    <div class="arrival-price">
-                        <span class="current-price">₹3,839</span>
-                        <span class="original-price">₹5,839</span>
-                    </div>
-                    <div class="arrival-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <span class="rating-text">(4.8)</span>
-                    </div>
+
+                    <a href="products.html" class="btn btn-primary">Explore Our Products</a>
                 </div>
             </div>
-            <!-- Add more arrival items -->
-        </div>
-    </section>
+        </section>
+
+        <!-- Testimonial / Review Cards -->
+        <section class="reviews" id="reviews">
+            <div class="testimonial-card review-card">
+                <h3 class="review-title">Amazing Texture!</h3>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>
+                    The Velvet Matte lipstick is so smooth and comfortable. The color lasts all day and doesn't dry out
+                    my lips.
+                </p>
+                <span class="author-info reviewer">Beauty Blogger</span>
+                <span class="review-date">Nov 2025</span>
+            </div>
+
+            <div class="testimonial-card review-card">
+                <h3 class="review-title">VERIFIED PURCHASE</h3>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>
+                    Best lipstick I've ever used! The shade is perfect and the packaging feels so luxurious.
+                </p>
+                <span class="author-info reviewer">Priya S.</span>
+                <span class="review-date">Nov 2025</span>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
