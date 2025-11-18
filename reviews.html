@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BeautySpot — Reviews</title>
 
-    <!-- Favicon for all browsers -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="favicon.png">
 
     <!-- font awesome cdn link  -->
@@ -22,7 +21,68 @@
     <link rel="stylesheet" href="loading-animations.css">
     <link rel="stylesheet" href="floating-include.css">
 
+    <!-- ============================
+         INTERNAL CSS FIX
+         ============================ -->
     <style>
+        /* Premium luxury review paragraph styling */
+        .review-card .review-text {
+            color: #1a1a1a !important;
+            /* Rich dark grey – high contrast */
+            font-size: 1.05rem;
+            /* Slightly larger for readability */
+            font-weight: 400;
+            /* Elegant light weight */
+            line-height: 1.75;
+            opacity: 1 !important;
+            filter: none !important;
+            text-shadow: 0 0 0 transparent !important;
+        }
+
+        /* Make reviewer title + product name slightly more elegant */
+        .review-card .reviewer-title,
+        .review-card .product-name {
+            color: #444 !important;
+            font-weight: 500;
+        }
+
+        /* Luxury accent: soft shadow only for text, not glow */
+        .review-card .review-text.premium {
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Prevent shimmer effect from washing out text */
+        .review-card {
+            isolation: isolate;
+        }
+
+        /* FIX: Change ONLY the paragraph text inside review boxes */
+        .review-card .review-text {
+            color: #2c2c2c;
+            /* Clean dark grey — readable */
+            line-height: 1.7;
+        }
+
+        /* OPTIONAL COLOR PALETTE (Pick one if needed) */
+
+        /* Pure black */
+        /* .review-card .review-text { color: #000; } */
+
+        /* Softer dark grey */
+        /* .review-card .review-text { color: #444; } */
+
+        /* Charcoal premium */
+        /* .review-card .review-text { color: #1f1f1f; } */
+
+        /* White for dark backgrounds */
+        /* .review-card .review-text { color: #fff; } */
+
+        /* Slightly muted white */
+        /* .review-card .review-text { color: #f2f2f2; } */
+
+
+
+        /* Your existing styling below */
         :root {
             --nav-bg-start: rgba(197, 4, 245, 0.388);
             --nav-bg-end: rgba(198, 0, 30, 0.656);
@@ -40,7 +100,6 @@
             background: linear-gradient(135deg, var(--nav-bg-start), var(--nav-bg-end));
             border: 1px solid var(--nav-border);
             backdrop-filter: blur(8px) saturate(120%);
-            -webkit-backdrop-filter: blur(8px) saturate(120%);
         }
 
         .nav-inline {
@@ -50,7 +109,6 @@
             padding: 0;
             background: transparent;
             border: none;
-            border-radius: 0;
         }
 
         .nav-inline .nav-item {
@@ -60,14 +118,12 @@
             border-radius: 6px;
             transition: color .18s ease, background-color .18s ease;
             font-weight: 600;
-            background: transparent;
         }
 
         .nav-inline .nav-item:hover,
         .nav-inline .nav-item:focus {
             color: var(--nav-text-hover);
             background: rgba(255, 255, 255, 0.03);
-            transform: none;
         }
     </style>
 </head>
@@ -90,14 +146,16 @@
                             <stop offset="100%" style="stop-color:#b76e79;stop-opacity:1" />
                         </radialgradient>
                     </defs>
+
                     <!-- Lipstick case -->
                     <rect x="45" y="70" width="30" height="35" rx="8" fill="url(#beautyGradient)" />
                     <!-- Lipstick bullet -->
                     <rect x="48" y="55" width="24" height="20" rx="12" fill="url(#gemGradient)" />
-                    <!-- Elegant diamond shape -->
+                    <!-- Diamond shape -->
                     <polygon points="60,25 70,35 60,45 50,35" fill="url(#gemGradient)" stroke="#ff4d88"
                         stroke-width="2" />
-                    <!-- Decorative sparkles -->
+
+                    <!-- Sparkles -->
                     <circle cx="35" cy="30" r="3" fill="#fce4ec" opacity="0.8" />
                     <circle cx="85" cy="40" r="2" fill="#ff4d88" opacity="0.9" />
                     <circle cx="25" cy="60" r="2.5" fill="#b76e79" opacity="0.7" />
@@ -106,19 +164,20 @@
             </div>
             <span class="brand-title">BeautySpot</span>
         </a>
-        <nav class="nav-inline" id="main-nav" aria-label="Main navigation">
-            <a href="index.html" class="nav-item" aria-label="Home">Home</a>
-            <a href="about.html" class="nav-item" aria-label="About">About</a>
-            <a href="products.html" class="nav-item" aria-label="Shop">Shop</a>
-            <a href="gallery.html" class="nav-item" aria-label="Gallery">Gallery</a>
-            <a href="arrivals.html" class="nav-item" aria-label="Arrivals">Arrival</a>
-            <a href="blogs.html" class="nav-item" aria-label="Blog">Tutorial</a>
-            <a href="reviews.html" class="nav-item active" aria-label="Review">Reviews</a>
+
+        <nav class="nav-inline" id="main-nav">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="products.html" class="nav-item">Shop</a>
+            <a href="gallery.html" class="nav-item">Gallery</a>
+            <a href="arrivals.html" class="nav-item">Arrival</a>
+            <a href="blogs.html" class="nav-item">Tutorial</a>
+            <a href="reviews.html" class="nav-item active">Reviews</a>
         </nav>
     </header>
 
     <main style="padding-top:8rem;">
-        <!-- reviews section copied -->
+
         <section class="reviews" id="reviews">
 
             <div class="section-header">
@@ -126,98 +185,196 @@
                     <span class="badge-text">⭐ Customer Reviews</span>
                 </div>
                 <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-description">Discover why thousands of beauty enthusiasts trust BeautySpot for their
-                    cosmetic needs.</p>
+                <p class="section-description">Discover why thousands trust BeautySpot for their cosmetic needs.</p>
             </div>
 
             <div class="reviews-grid">
 
+                <!-- CARD 1 -->
                 <div class="review-card glass-card shimmer-effect">
                     <div class="review-header">
                         <div class="reviewer-info">
-                            <img src="images/portrait-placeholder.svg" alt="Sarah Johnson" class="reviewer-image">
+                            <img src="images/portrait-placeholder.svg" class="reviewer-image">
                             <div class="reviewer-details">
                                 <h4 class="reviewer-name">Sarah Johnson</h4>
                                 <p class="reviewer-title">Beauty Blogger</p>
                                 <div class="review-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="review-badge">Verified Purchase</div>
                     </div>
-                    <p class="review-text">"BeautySpot has completely transformed my makeup routine! The quality of
-                        their
-                        products is exceptional, and the customer service is outstanding. I've tried countless brands,
-                        but
-                        nothing compares to the luxury experience they provide."</p>
+
+                    <p class="review-text" style="color:#3a3a3a; font-weight:600; font-size:1.15rem;">
+                        BeautySpot has completely transformed my makeup routine! Their products are exceptional and the
+                        customer service is outstanding. Nothing compares to the luxury experience they provide.
+                    </p>
+
                     <div class="review-footer">
-                        <span class="review-date">January 15, 2024</span>
+                        <span class="review-date" style="color:#b76e79; font-weight:600;">January 15, <span
+                                style="color:#ff4d88;">2024</span></span>
                         <div class="review-product">
                             <span class="product-name">✨ Luxury Foundation Set</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- CARD 3 -->
                 <div class="review-card glass-card shimmer-effect">
                     <div class="review-header">
                         <div class="reviewer-info">
-                            <img src="images/portrait-placeholder.svg" alt="Maria Garcia" class="reviewer-image">
-                            <div class="reviewer-details">
-                                <h4 class="reviewer-name">Maria Garcia</h4>
-                                <p class="reviewer-title">Makeup Artist</p>
-                                <div class="review-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="review-badge">Professional</div>
-                    </div>
-                    <p class="review-text">"As a professional makeup artist, I demand the best quality products for my
-                        clients. BeautySpot consistently delivers premium cosmetics that photograph beautifully and last
-                        all
-                        day. Their range is incredible!"</p>
-                    <div class="review-footer">
-                        <span class="review-date">December 28, 2023</span>
-                        <div class="review-product">
-                            <span class="product-name">💄 Professional Lipstick Collection</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="review-card glass-card shimmer-effect">
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <img src="images/portrait-placeholder.svg" alt="Emma Thompson" class="reviewer-image">
+                            <img src="images/portrait-placeholder.svg" class="reviewer-image">
                             <div class="reviewer-details">
                                 <h4 class="reviewer-name">Emma Thompson</h4>
                                 <p class="reviewer-title">Fashion Model</p>
                                 <div class="review-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="review-badge">Influencer</div>
                     </div>
-                    <p class="review-text">"The pigmentation and staying power of BeautySpot's products are unmatched.
-                        Perfect for long photoshoots and runway shows. The packaging is absolutely gorgeous too - so
-                        Instagram-worthy!"</p>
+
+                    <p class="review-text">
+                        "The pigmentation and staying power of BeautySpot's products are unmatched. Perfect for long
+                        shoots and runway shows — the packaging is gorgeous and so Instagram-worthy!"
+                    </p>
+
                     <div class="review-footer">
-                        <span class="review-date">January 8, 2024</span>
+                        <span class="review-date" style="color:#b76e79; font-weight:600;">January 8, <span
+                                style="color:#ff4d88;">2024</span></span>
                         <div class="review-product">
                             <span class="product-name">✨ Glamour Eyeshadow Palette</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="review-card glass-card shimmer-effect">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="images/portrait-placeholder.svg" class="reviewer-image">
+                            <div class="reviewer-details">
+                                <h4 class="reviewer-name">Priya Singh</h4>
+                                <p class="reviewer-title">Beauty Enthusiast</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-badge">Verified Purchase</div>
+                    </div>
+
+                    <p class="review-text">
+                        "I love how gentle BeautySpot's skincare line is on my sensitive skin. The results are visible
+                        and my confidence has soared! Highly recommended for anyone looking for luxury and care."
+                    </p>
+
+                    <div class="review-footer">
+                        <span class="review-date" style="color:#b76e79; font-weight:600;">February 2, <span
+                                style="color:#ff4d88;">2024</span></span>
+                        <div class="review-product">
+                            <span class="product-name">🌸 Gentle Glow Skincare Set</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="review-card glass-card shimmer-effect">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="images/portrait-placeholder.svg" class="reviewer-image">
+                            <div class="reviewer-details">
+                                <h4 class="reviewer-name">Olivia Brown</h4>
+                                <p class="reviewer-title">Makeup Lover</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-badge">Top Reviewer</div>
+                    </div>
+
+                    <p class="review-text">
+                        "BeautySpot's highlighter is my new favorite! It gives a radiant glow without looking glittery.
+                        The packaging is so elegant, I love displaying it on my vanity."
+                    </p>
+
+                    <div class="review-footer">
+                        <span class="review-date" style="color:#b76e79; font-weight:600;">March 10, <span
+                                style="color:#ff4d88;">2024</span></span>
+                        <div class="review-product">
+                            <span class="product-name">✨ Radiant Highlighter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="review-card glass-card shimmer-effect">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="images/portrait-placeholder.svg" class="reviewer-image">
+                            <div class="reviewer-details">
+                                <h4 class="reviewer-name">Ava Patel</h4>
+                                <p class="reviewer-title">Cosmetics Reviewer</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-badge">Verified Purchase</div>
+                    </div>
+
+                    <p class="review-text">
+                        "BeautySpot's concealer blends perfectly and lasts all day. I get compliments on my flawless
+                        skin every time I use it!"
+                    </p>
+
+                    <div class="review-footer">
+                        <span class="review-date" style="color:#b76e79; font-weight:600;">April 5, <span
+                                style="color:#ff4d88;">2024</span></span>
+                        <div class="review-product">
+                            <span class="product-name">🕊️ Flawless Concealer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 7 -->
+                <div class="review-card glass-card shimmer-effect">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="images/portrait-placeholder.svg" class="reviewer-image">
+                            <div class="reviewer-details">
+                                <h4 class="reviewer-name">Liam Chen</h4>
+                                <p class="reviewer-title">Beauty Vlogger</p>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-badge">Influencer</div>
+                    </div>
+
+                    <p class="review-text">
+                        "The lipstick shades from BeautySpot are vibrant and moisturizing. My followers always ask what
+                        I'm wearing!"
+                    </p>
+
+                    <div class="review-footer">
+                        <span class="review-date" style="color:#b76e79; font-weight:600;">May 12, <span
+                                style="color:#ff4d88;">2024</span></span>
+                        <div class="review-product">
+                            <span class="product-name">💋 Velvet Lipstick Set</span>
                         </div>
                     </div>
                 </div>
@@ -227,8 +384,10 @@
         </section>
     </main>
 
-    <footer style="padding:4rem; text-align:center;">
-        <p><a href="index.html">Back to Home</a></p>
+    <footer style="padding:1.2rem 0 0 0; background:none; border:none;">
+        <p style="color:#ccc; font-size:0.9rem; text-align:center; margin-top:2rem;">
+            © 2025 BeautySpot — All Rights Reserved.
+        </p>
     </footer>
 
     <script src="script.js"></script>
