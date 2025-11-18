@@ -1269,7 +1269,6 @@ img[src*="service-"]::before { content: '💖'; }
     width: 100%;
   }
 }
-}
 
 a:hover, button:hover, .btn:hover, input[type="submit"]:hover, input[type="button"]:hover, .nav-item:hover {
   filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.8));
