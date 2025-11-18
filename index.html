@@ -361,6 +361,21 @@
             }
         }
     </style>
+    /* Target footer section */
+    footer {
+        font-size: 18px; /* Adjust size as needed */
+    }
+
+    /* If you want to target specific text like "BeautySpot – where confidence meets luxury." */
+    footer .footer-tagline {
+        font-size: 20px; /* Example for tagline */
+        font-weight: bold;
+    }
+
+    /* For links inside footer */
+    footer a {
+        font-size: 16px;
+    }
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -923,69 +938,138 @@
 
     <!-- footer section starts  -->
 
-    <footer class="footer minimal-luxury-footer">
-        <div class="footer-columns">
-            <div class="footer-col about-brand">
-                <h3>About BeautySpot</h3>
-                <p>BeautySpot is dedicated to redefining luxury in makeup and skincare. Discover premium products
-                    crafted for radiant, confident beauty.</p>
-            </div>
-            <div class="footer-col quick-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="products.html">Shop</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="blogs.html">Tutorial</a></li>
-                </ul>
-            </div>
-            <div class="footer-col customer-care">
-                <h3>Customer Care</h3>
-                <ul>
-                    <li><a href="mailto:info@beautyspot.com">Contact Us</a></li>
-                    <li><a href="products.html#shipping">Shipping & Returns</a></li>
-                    <li><a href="about.html#faqs">FAQs</a></li>
-                    <li><a href="about.html#privacy">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col follow-us">
-                <h3>Follow Us</h3>
-                <div class="footer-social-icons">
-                    <a href="https://facebook.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
-                    <a href="https://youtube.com/beautyspot" class="social-icon" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+    <footer class="minimal-luxury-footer">
+        <div class="footer-human"
+            style="background: #fff6fa; border-top: 2px solid #ff69b4; box-shadow: 0 -2px 24px rgba(255,105,180,0.08); padding: 32px 0 0 0; font-size:1.18rem;">
+            <div
+                style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between;">
+                <div style="flex:1.2; min-width:220px; margin-bottom:24px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.55rem; margin-bottom:12px;">
+                        Follow Us</h3>
+                    <div style="display:flex; gap:12px; margin-bottom:10px;">
+                        <a href="https://instagram.com/beautyspot" target="_blank" rel="noopener"
+                            style="background:#fff; border-radius:50%; padding:7px; box-shadow:0 2px 8px #ffe4f0;"><i
+                                class="fab fa-instagram" style="color:#e1306c;"></i></a>
+                        <a href="https://youtube.com/beautyspot" target="_blank" rel="noopener"
+                            style="background:#fff; border-radius:50%; padding:7px; box-shadow:0 2px 8px #ffe4f0;"><i
+                                class="fab fa-youtube" style="color:#ff0000;"></i></a>
+                        <a href="https://facebook.com/beautyspot" target="_blank" rel="noopener"
+                            style="background:#fff; border-radius:50%; padding:7px; box-shadow:0 2px 8px #ffe4f0;"><i
+                                class="fab fa-facebook-f" style="color:#1877f3;"></i></a>
+                        <a href="https://pinterest.com/beautyspot" target="_blank" rel="noopener"
+                            style="background:#fff; border-radius:50%; padding:7px; box-shadow:0 2px 8px #ffe4f0;"><i
+                                class="fab fa-pinterest-p" style="color:#e60023;"></i></a>
+                        <a href="https://tiktok.com/@beautyspot" target="_blank" rel="noopener"
+                            style="background:#fff; border-radius:50%; padding:7px; box-shadow:0 2px 8px #ffe4f0;"><i
+                                class="fab fa-tiktok" style="color:#000;"></i></a>
+                    </div>
+                    <div style="font-size:1.08rem; color:#d72660; font-weight:600; margin-bottom:10px;">
+                        <span style="margin-right:12px;">Instagram</span>
+                        <span style="margin-right:12px;">Tutorials</span>
+                        <span style="margin-right:12px;">Community</span>
+                        <span style="margin-right:12px;">Beauty Boards</span>
+                        <span>Mini Reviews</span>
+                    </div>
+                </div>
+                <div style="flex:1; min-width:180px; margin-bottom:24px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.32rem; margin-bottom:12px;">Quick
+                        Links</h3>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                        <li style="margin-bottom:7px;"><a href="index.html"
+                                style="color:#222; text-decoration:none;">Home</a></li>
+                        <li style="margin-bottom:7px;"><a href="about.html"
+                                style="color:#222; text-decoration:none;">About Us</a></li>
+                        <li style="margin-bottom:7px;"><a href="products.html"
+                                style="color:#222; text-decoration:none;">Products</a></li>
+                        <li style="margin-bottom:7px;"><a href="blogs.html"
+                                style="color:#222; text-decoration:none;">Tutorials / Blog</a></li>
+                        <li style="margin-bottom:7px;"><a href="arrivals.html"
+                                style="color:#222; text-decoration:none;">New Arrivals</a></li>
+                        <li style="margin-bottom:7px;"><a href="gallery.html"
+                                style="color:#222; text-decoration:none;">Gallery</a></li>
+                        <li style="margin-bottom:7px;"><a href="reviews.html"
+                                style="color:#222; text-decoration:none;">Reviews</a></li>
+                        <li><a href="contact.html" style="color:#222; text-decoration:none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div style="flex:1; min-width:180px; margin-bottom:24px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.32rem; margin-bottom:12px;">
+                        Customer Care</h3>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                        <li style="margin-bottom:7px;"><a href="#faq" style="color:#222; text-decoration:none;">FAQ</a>
+                        </li>
+                        <li style="margin-bottom:7px;"><a href="#returns"
+                                style="color:#222; text-decoration:none;">Return Policy</a></li>
+                        <li style="margin-bottom:7px;"><a href="#shipping"
+                                style="color:#222; text-decoration:none;">Shipping Info</a></li>
+                        <li style="margin-bottom:7px;"><a href="#track" style="color:#222; text-decoration:none;">Track
+                                Order</a></li>
+                        <li style="margin-bottom:7px;"><a href="#privacy"
+                                style="color:#222; text-decoration:none;">Privacy Policy</a></li>
+                        <li><a href="#terms" style="color:#222; text-decoration:none;">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div style="flex:1.2; min-width:220px; margin-bottom:24px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.32rem; margin-bottom:12px;">
+                        Newsletter Signup</h3>
+                    <p style="font-size:1rem; color:#d72660; margin-bottom:10px;">Join our Beauty Circle — exclusive
+                        offers, early drops & skincare tips.</p>
+                    <form action="#" method="post" autocomplete="off">
+                        <div style="display:flex; box-shadow:0 0 8px #ff69b4; border-radius:24px; overflow:hidden;">
+                            <input type="email" name="email"
+                                style="flex:1; border:none; padding:8px 12px; font-size:1rem; outline:none;"
+                                placeholder="Your email address" required>
+                            <button type="submit"
+                                style="background:#ff69b4; color:#fff; border:none; padding:8px 18px; font-weight:600; cursor:pointer;">Subscribe</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
-        <div class="footer-newsletter-row">
-            <form class="footer-newsletter" action="#" method="post" autocomplete="off">
-                <label for="footer-news-email" class="footer-news-label">Sign up for exclusive offers</label>
-                <div class="footer-news-input-group">
-                    <input type="email" id="footer-news-email" name="email" class="footer-newsletter-input"
-                        placeholder="Your email address" required>
-                    <button type="submit" class="footer-newsletter-btn" onclick="alert('Thank you for subscribing!'); return false;">Subscribe</button>
+            <hr style="border:none; border-top:1.5px dashed #ff69b4; margin:32px 0 18px 0;">
+            <div
+                style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between;">
+                <div style="flex:1.1; min-width:200px; margin-bottom:18px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.22rem; margin-bottom:12px;">Brand
+                        Statement</h3>
+                    <p style="font-size:1.05rem; color:#d72660; font-style:italic;">BeautySpot — where confidence meets
+                        luxury.</p>
                 </div>
-            </form>
-        </div>
-        <div class="footer-logo-row">
-            <div class="footer-logo">
-                <svg viewBox="0 0 60 60" width="48" height="48" class="footer-logo-svg" aria-label="BeautySpot logo">
-                    <defs>
-                        <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#fce4ec" />
-                            <stop offset="100%" stop-color="#ff69b4" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="30" cy="30" r="28" fill="url(#footerLogoGradient)" stroke="#fff" stroke-width="2" />
-                    <text x="50%" y="54%" text-anchor="middle" fill="#d72660" font-size="18" font-family="Georgia,serif"
-                        font-weight="bold">BS</text>
-                </svg>
+                <div style="flex:1.1; min-width:200px; margin-bottom:18px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.22rem; margin-bottom:12px;">
+                        Contact & Location</h3>
+                    <ul style="list-style:none; padding:0; margin:0; color:#222;">
+                        <li style="margin-bottom:6px;">📍 Kolkata, India</li>
+                        <li style="margin-bottom:6px;">📞 +91-9876543210</li>
+                        <li>✉ support@beautyspot.com</li>
+                    </ul>
+                </div>
+                <div style="flex:1.1; min-width:200px; margin-bottom:18px;">
+                    <h3 style="color:#ff69b4; font-family:'Georgia',serif; font-size:1.22rem; margin-bottom:12px;">We
+                        Accept</h3>
+                    <div style="display:flex; gap:10px; margin-top:8px;">
+                        <span title="Visa"><img
+                                src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/visa.svg" alt="Visa"
+                                style="height:24px;"></span>
+                        <span title="Mastercard"><img
+                                src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/mastercard.svg"
+                                alt="Mastercard" style="height:24px;"></span>
+                        <span title="PayPal"><img
+                                src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/paypal.svg"
+                                alt="PayPal" style="height:24px;"></span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="footer-copyright">
-            &copy; 2025 BeautySpot. All rights reserved.
+            <div style="max-width:1200px; margin:0 auto;">
+                <div
+                    style="background:#ff69b4; border-radius:12px; padding:12px 0; margin-top:2rem; text-align:center; position:relative;">
+                    <span style="color:#fff; font-size:1.12rem; font-weight:600; letter-spacing:0.5px;">
+                        © 2025 BeautySpot — All Rights Reserved.
+                    </span>
+                    <span
+                        style="position:absolute; right:18px; bottom:8px; color:#fff; font-size:1rem; font-family:'Brush Script MT',cursive; opacity:0.7;">Hand-crafted
+                        with love</span>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -993,7 +1077,7 @@
 
     <!-- Scroll to Top Button -->
     <button id="scrollToTop" class="scroll-to-top" title="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-arrow-up" style="color:#ff0080;"></i>
     </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
